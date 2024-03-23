@@ -7,8 +7,8 @@ from aiogram.fsm.state import any_state
 from aiogram.types import InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from data.admins import Admin
 from bot import design_bot
+from data.admins import Admin
 from data.data_base import Users
 from data.keyboards import admin_keyboard, add_delete_admin, cancel_keyboard, choice_bot_stat, \
     back_to_bots_keyboard
@@ -96,23 +96,30 @@ async def get_stat(call: types.CallbackQuery, state: FSMContext, bot: Bot):
 @is_main_admin
 async def new_mailing(message: types.Message, state: FSMContext, bot: Bot):
     await state.clear()
-    await message.answer(text="Напиши сообщение, которое разошлется пользователям", reply_markup=cancel_keyboard.as_markup())
+    message = await message.answer(text="Напиши сообщение, которое разошлется пользователям", reply_markup=cancel_keyboard.as_markup())
     await state.set_state(InputMessage.enter_message_mailing)
+    await state.update_data(message_id=message.message_id)
 
 
 @admin_router.message(F.text, InputMessage.enter_message_mailing)
 @is_main_admin
 async def enter_message_mailing(message: types.Message, state: FSMContext, bot: Bot):
     # if filename == "all_bots":
+    data = await state.get_data()
+    message_id = data.get("message_id")
     user1, user2, user3 = (Users(message.from_user.id, "design_level"), Users(message.from_user.id,
                                                                               "earnings_level"),
                            Users(message.from_user.id, "send_link_data"))
     await user1.read_data(), await user2.read_data(), await user3.read_data()
     users1, users2, users3 = await user1.get_bot_users(), await user2.get_bot_users(), await user3.get_bot_users()
     users_set = list(set(users1) | set(users2) | set(users3))
-    task_list1 = [asyncio.create_task(design_bot.send_message(chat_id=user, text=message.text)) for user in users_set]
-    await asyncio.gather(*task_list1)
+    for user in users_set:
+        try:
+            await design_bot.send_message(chat_id=user, text=message.text)
+        except:
+            continue
     await message.answer(text="Ваша рассылка отправлена всем пользователям бота", reply_markup=admin_keyboard)
+    await bot.delete_message(message_id=message_id, chat_id=message.from_user.id)
     await state.clear()
 
 

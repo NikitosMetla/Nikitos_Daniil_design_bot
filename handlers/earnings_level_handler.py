@@ -9,8 +9,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from data.data_base import Users
 from data.keyboards import start_keyboard
-from settings import earnings_questions, InputMessage, options, stickers, earnings_level_photo_id, user_earning, \
-    design_level_video_note1, design_level_video_note2
+from settings import earnings_questions, InputMessage, options, stickers, earnings_level_photo_id, user_earning, design_level_video_note2
 from utils.is_subscriber import is_subscriber
 
 earnings_level_router = Router()

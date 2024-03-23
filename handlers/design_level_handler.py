@@ -10,7 +10,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from data.data_base import Users
 from data.keyboards import start_keyboard
 from settings import design_questions, InputMessage, user_levels, options, stickers, start_photo_id, \
-    design_level_photo_id, design_level_video_note1, level_photos, design_level_video_note2
+    design_level_photo_id, level_photos, design_level_video_note2
 from utils.is_subscriber import is_subscriber
 
 design_level_router = Router()
@@ -19,6 +19,10 @@ design_level_router = Router()
 @design_level_router.message(F.video_note, any_state)
 async def admin_cancel(message: types.Message, state: FSMContext, bot: Bot):
     print(message.video_note.file_id)
+
+@design_level_router.message(F.photo, any_state)
+async def admin_cancel(message: types.Message, state: FSMContext, bot: Bot):
+    print(message.photo[-1].file_id)
 
 
 @design_level_router.message(Text(text="/start"), any_state)

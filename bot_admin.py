@@ -5,7 +5,6 @@ import asyncio
 from handlers.admin_bot_handlers import admin_router
 from settings import token_admin_bot, storage_admin_bot
 
-
 async def main():
     admin_bot = Bot(token=token_admin_bot, parse_mode="html")
     print(await admin_bot.get_me())
