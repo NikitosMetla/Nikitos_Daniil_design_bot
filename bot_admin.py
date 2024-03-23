@@ -7,12 +7,12 @@ from settings import token_admin_bot, storage_admin_bot
 
 
 async def main():
-    bot = Bot(token=token_admin_bot, parse_mode="html")
-    print(await bot.get_me())
-    await bot.delete_webhook(drop_pending_updates=True)
+    admin_bot = Bot(token=token_admin_bot, parse_mode="html")
+    print(await admin_bot.get_me())
+    await admin_bot.delete_webhook(drop_pending_updates=True)
     dp = Dispatcher(storage=storage_admin_bot)
     dp.include_routers(admin_router)
-    await dp.start_polling(bot)
+    await dp.start_polling(admin_bot)
 
 
 if __name__ == "__main__":
