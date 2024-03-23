@@ -1,4 +1,4 @@
-import random
+          import random
 
 from aiogram import Router, Bot, types
 from aiogram.filters import Text
@@ -82,7 +82,7 @@ async def user_send_link(call: types.CallbackQuery, state: FSMContext, bot: Bot)
         await state.clear()
         return
     elif last_question == 5:
-        await call.message.answer(text=f"Ты ответил на половину вопросов, поздравляем! Мы видим, что у тебя уже крутой уровень в дизайне, но как говорят великие – нет предела совершенству! Поэтому прокачивай свои скиллы в Слеш вместе с менторами из Ozon, Yandex, Сбер и других компаний, для этого забирай звонок с топом по скидке 30% до 20 марта: slashstudy.ru")
+        await call.message.answer(text=f"Ты ответил на половину вопросов, поздравляем! Мы видим, что у тебя уже крутой уровень в дизайне, но как говорят великие – нет предела совершенству! Поэтому прокачивай свои скиллы в Слеш вместе с менторами из Ozon, Yandex, Сбер и других компаний, для этого забирай звонок с топом по скидке 30% до 20 апреля: slashstudy.ru")
         await bot.send_video_note(chat_id=call.from_user.id, video_note=design_level_video_note2)
     keyboard = InlineKeyboardBuilder()
     question = earnings_questions.get(f'{last_question + 1} вопрос')
