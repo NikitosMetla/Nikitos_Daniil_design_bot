@@ -8,6 +8,7 @@ from aiogram.types import InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from data.admins import Admin
+from bot import design_bot
 from data.data_base import Users
 from data.keyboards import admin_keyboard, add_delete_admin, cancel_keyboard, choice_bot_stat, \
     back_to_bots_keyboard
@@ -109,7 +110,7 @@ async def enter_message_mailing(message: types.Message, state: FSMContext, bot: 
     await user1.read_data(), await user2.read_data(), await user3.read_data()
     users1, users2, users3 = await user1.get_bot_users(), await user2.get_bot_users(), await user3.get_bot_users()
     users_set = list(set(users1) | set(users2) | set(users3))
-    task_list1 = [asyncio.create_task(bot.send_message(chat_id=user, text=message.text)) for user in users_set]
+    task_list1 = [asyncio.create_task(design_bot.send_message(chat_id=user, text=message.text)) for user in users_set]
     await asyncio.gather(*task_list1)
     await message.answer(text="Ваша рассылка отправлена всем пользователям бота", reply_markup=admin_keyboard)
     await state.clear()
