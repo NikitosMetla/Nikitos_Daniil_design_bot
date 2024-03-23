@@ -1,4 +1,4 @@
-          import random
+import random
 
 from aiogram import Router, Bot, types
 from aiogram.filters import Text
