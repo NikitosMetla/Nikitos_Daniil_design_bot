@@ -1,13 +1,18 @@
 {
   "users": {
     "774127719": {
-      "start_time": 1711232549.912884,
+      "start_time": 1711670074.755584,
+      "start_bot": true,
+      "complete_questions": true
+    },
+    "648305412": {
+      "start_time": 1711668192.540045,
       "start_bot": true,
       "complete_questions": true
     }
   },
   "statistic": {
-    "started": 1,
-    "finished": 1
+    "started": 2,
+    "finished": 2
   }
 }
