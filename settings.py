@@ -1,27 +1,27 @@
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.storage.memory import MemoryStorage
 
-channel_id = ""
+channel_id = "-1001737287489"
 storage_bot = MemoryStorage()
 storage_admin_bot = MemoryStorage()
 
-design_level_video_note2 = ""
-mentor_video_note = ""
+design_level_video_note2 = "DQACAgIAAxkBAAMPZf9Sy0TilpIUBE5re_RxICeU9YIAAqNKAAJHYrBLWr2C75DMkE80BA"
+mentor_video_note = "DQACAgIAAxkBAAMOZf9SseLkUN8U6iZoQmlH0Mz0GMIAAmBEAAI0zOlLDhftrsyYg_o0BA"
 
-start_photo_id=""
-design_level_photo_id=""
-earnings_level_photo_id=""
-send_link_photo_id=""
+start_photo_id="AgACAgIAAxkBAAMKZf9SIG0wa_WMx1mCeSfCt6swBt0AAqnSMRusmgFIvuo6MNdFGIABAAMCAAN5AAM0BA"
+design_level_photo_id="AgACAgIAAxkBAAMLZf9SQ_cRXWtbsZpfachXkUiaWnYAAqrSMRusmgFIoY-TGMfKYnMBAAMCAAN5AAM0BA"
+earnings_level_photo_id="AgACAgIAAxkBAAMMZf9SUxm1BzXlOcCrzHgPQVwqWRYAAqvSMRusmgFIfHhCRiiwtg4BAAMCAAN5AAM0BA"
+send_link_photo_id="AgACAgIAAxkBAAMNZf9SaI5VAas-_NP-55UHnBj2VNYAAqzSMRusmgFIwURVAmdm87YBAAMCAAN5AAM0BA"
 
-senior_photo_id=""
-middle_photo_id=""
-junior_photo_id=""
-artdir_photo_id=""
-interesant_photo_id=""
+senior_photo_id="AgACAgIAAxkBAAMHZf9RVEMJATlzGXe4aXotMm-zfyQAAqTSMRusmgFIh1IJUZVYocIBAAMCAAN5AAM0BA"
+middle_photo_id="AgACAgIAAxkBAAMGZf9RRiiZ1GcfUX89n-Ierwj3P4MAAqPSMRusmgFI7JEz0--h4S4BAAMCAAN5AAM0BA"
+junior_photo_id="AgACAgIAAxkBAAMFZf9RJAew6GsmkMOttz4pJZ9jodQAAqHSMRusmgFIAkYI-mBq61QBAAMCAAN5AAM0BA"
+artdir_photo_id="AgACAgIAAxkBAAMJZf9SB5BuhZ8KlHuwov0rXPV9R6cAAqjSMRusmgFIMDa35SkE1zYBAAMCAAN5AAM0BA"
+interesant_photo_id="AgACAgIAAxkBAAMIZf9RqpWWIi9aVCamfBpP6iT5vdcAAqfSMRusmgFIOznTjMJct14BAAMCAAN5AAM0BA"
 
-token_design_level = ""
+token_design_level = "7157970901:AAEM8wbFLiID-Ych0gy3jK-OzdJ9pT99IzU"
 
-token_admin_bot = ""
+token_admin_bot = "6752520352:AAHUSSHHSr-PU5C4PWfWGsCXDOmkAXHKz_k"
 
 class InputMessage(StatesGroup):
     design_level = State()
