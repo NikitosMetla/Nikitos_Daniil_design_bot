@@ -6,7 +6,7 @@ import requests
 class RatingChatGpt:
     def __init__(self, photo_bytes):
         self.photo_bytes = photo_bytes
-        self.__api_key = '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'
+        self.__api_key = 'sk-proj-PtrcrpbgTYLkE4RxbMHwT3BlbkFJNGfJ2N64IOWxRXUqlkJm'
 
     async def assessment(self, objective: bool):
         self.photo_bytes.seek(0)
