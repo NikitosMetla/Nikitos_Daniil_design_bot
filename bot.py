@@ -1,6 +1,8 @@
 import asyncio
 
 from aiogram import Dispatcher, Bot
+
+from handlers.chat_gpt_handlers import chat_gpt_router
 from handlers.design_level_handler import design_level_router
 from handlers.earnings_level_handler import earnings_level_router
 from handlers.mentor_handler import mentor_router
@@ -14,7 +16,7 @@ async def main():
     print(await design_bot.get_me())
     await design_bot.delete_webhook(drop_pending_updates=True)
     dp = Dispatcher(storage=storage_bot)
-    dp.include_routers(mentor_router, design_level_router, earnings_level_router, send_link_router)
+    dp.include_routers(mentor_router, design_level_router, earnings_level_router, send_link_router, chat_gpt_router)
     await dp.start_polling(design_bot)
 
 

@@ -21,9 +21,11 @@ def is_subscriber(func):
                 return await func(message, state, bot, **kwargs)
             elif type(message) == types.Message:
                 await message.delete()
-                await message.answer(f"Не вижу твою подписку :(\nУ нас там завал полезного контента, а еще печеньки -> {link}")
+                await message.answer(f"Не вижу твою подписку :(\nУ нас там завал полезного"
+                                     f" контента, а еще печеньки -> {link}")
             else:
-                await message.message.answer(f"Не вижу твою подписку :(\nУ нас там завал полезного контента, а еще печеньки -> {link}")
+                await message.message.answer(f"Не вижу твою подписку :(\nУ нас там завал"
+                                             f" полезного контента, а еще печеньки -> {link}")
         except Exception:
             print(traceback.format_exc())
         # finally:

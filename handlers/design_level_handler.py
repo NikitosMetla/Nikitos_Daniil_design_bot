@@ -17,23 +17,28 @@ from utils.is_subscriber import is_subscriber
 design_level_router = Router()
 
 
-@design_level_router.message(F.video_note, any_state)
-async def admin_cancel(message: types.Message, state: FSMContext, bot: Bot):
-    print(message.video_note.file_id)
-
-@design_level_router.message(F.photo, any_state)
-async def admin_cancel(message: types.Message, state: FSMContext, bot: Bot):
-    print(message.photo[-1].file_id)
+# @design_level_router.message(F.video_note, any_state)
+# async def admin_cancel(message: types.Message, state: FSMContext, bot: Bot):
+#     print(message.video_note.file_id)
 
 
+@design_level_router.callback_query(Text(startswith="start_menu"), any_state)
 @design_level_router.message(Text(text="/start"), any_state)
 @is_subscriber
-async def start(message: types.Message, state: FSMContext, bot: Bot):
-    next_message = await message.answer_photo(start_photo_id, "Выбирай, чего желаешь: узнать свою ЗП по рынку, крутануть"
-                                                                      " рулетку на определения скиллов"
-                                                                      " в дизайне, забрать самую большую базу по дизайну"
-                                                                      " или получить личного ментора из топовой"
-                                                                      " компании!")
+async def start(message: types.Message | types.CallbackQuery, state: FSMContext, bot: Bot):
+    if type(message) == types.CallbackQuery:
+        next_message = await message.message.answer_photo(start_photo_id, "Выбирай, чего желаешь: узнать свою ЗП по рынку, крутануть"
+                                                                          " рулетку на определения скиллов"
+                                                                          " в дизайне, забрать самую большую базу по дизайну"
+                                                                          " или получить личного ментора из топовой"
+                                                                          " компании!")
+        await message.message.delete()
+    else:
+        next_message = await message.answer_photo(start_photo_id, "Выбирай, чего желаешь: узнать свою ЗП по рынку, крутануть"
+                                                                          " рулетку на определения скиллов"
+                                                                          " в дизайне, забрать самую большую базу по дизайну"
+                                                                          " или получить личного ментора из топовой"
+                                                                          " компании!")
     await next_message.edit_reply_markup(reply_markup=start_keyboard(next_message.message_id).as_markup())
     await state.clear()
 

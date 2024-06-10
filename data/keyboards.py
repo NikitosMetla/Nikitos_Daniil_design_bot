@@ -11,6 +11,8 @@ admin_keyboard = ReplyKeyboardMarkup(keyboard=admin_kb, resize_keyboard=True)
 
 def start_keyboard(message_id: int):
     start_keyboard = InlineKeyboardBuilder()
+    start_keyboard.row(InlineKeyboardButton(text="Ai-рекомендации по дизайну🚀",
+                                            callback_data=f"ai_recommendation|{message_id}"))
     start_keyboard.row(InlineKeyboardButton(text="Личный ментор (new!)", callback_data=f"mentor|{message_id}"))
     start_keyboard.row(InlineKeyboardButton(text="Скилл-детектор", callback_data=f"start_design_level|{message_id}"))
     start_keyboard.row(InlineKeyboardButton(text="ЗпСканнер", callback_data=f"start_earnings_level|{message_id}"))
@@ -24,6 +26,7 @@ add_delete_admin.row(InlineKeyboardButton(text="Удалить админа", ca
 
 choice_bot_stat = InlineKeyboardBuilder()
 choice_bot_stat.row(InlineKeyboardButton(text="Личный ментор", callback_data="mailing|mentor_stat"))
+choice_bot_stat.row(InlineKeyboardButton(text="Ai рекомендации", callback_data="mailing|ai_recommendations"))
 choice_bot_stat.row(InlineKeyboardButton(text="Уровень дизайна", callback_data="mailing|design_level"))
 choice_bot_stat.row(InlineKeyboardButton(text="Уровень зароботка", callback_data="mailing|earnings_level"))
 choice_bot_stat.row(InlineKeyboardButton(text="Отправитель методички", callback_data="mailing|send_link_data"))

@@ -80,7 +80,7 @@ async def get_stat(call: types.CallbackQuery, state: FSMContext, bot: Bot):
     await user.read_data()
     stat_day, stat_month = await user.get_day_statistic(), await user.get_month_statistic()
     stat_all = await user.get_all_statistic()
-    if filename != "send_link_data" and filename != "mentor_stat":
+    if filename != "send_link_data" and filename != "mentor_stat" and filename != "ai_recommendations":
         text_message = (f"Статистика за день: <b>{stat_day[0]}</b>, из которых <b>{stat_day[1]}</b> прошли опрос \n"
                         f"Статистика за месяц: <b>{stat_month[0]}</b>, из которых <b>{stat_month[1]}</b> прошли опрос\n"
                         f"Статистика за все время: <b>{stat_all[0]}</b>, из которых <b>{stat_all[1]}</b> прошли опрос")
